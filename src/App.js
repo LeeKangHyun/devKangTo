@@ -6,11 +6,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-				<ul>
-				  <li>home</li>
-				  <li>board</li>
-				 	<li>photo</li>
-				</ul>
+        <ul>
+          <li>home</li>
+          <li>board</li>
+          <li>photo</li>
+        </ul>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>

@@ -13,7 +13,7 @@ app.get('*', function (req, res) {
 
 http.createServer(app).listen(9000, () => {
   console.log('http server running 9000');
-})
+});
 
 https.createServer({
   pfx: fs.readFileSync('./private/cert.pfx'),
