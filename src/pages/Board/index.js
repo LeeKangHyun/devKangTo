@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Board = () => {
+const BoardPage = () => {
   return (
     <div>
       <h1>Board</h1>
@@ -8,4 +8,4 @@ const Board = () => {
   )
 };
 
-export default Board;
+export default BoardPage;

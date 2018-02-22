@@ -1,15 +1,18 @@
 import React from 'react';
-import logo from '../../logo.svg';
 
-const Index = () => {
+import logo from './image/logo.svg';
+
+import { Header, Logo, Title } from './styled';
+
+const HomePage = () => {
   return (
     <div>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">DevKangTo World</h1>
-      </header>
+      <Header>
+        <Logo src={logo} alt="logo" />
+        <Title>DevKangTo World</Title>
+      </Header>
     </div>
   )
 };
 
-export default Index;
+export default HomePage;
