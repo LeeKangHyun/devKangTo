@@ -16,7 +16,7 @@ http.createServer(app).listen(9000, () => {
 });
 
 https.createServer({
-  pfx: fs.readFileSync('./private/cert.pfx'),
+  pfx: fs.readFileSync(path.join(__dirname, 'private/cert.pfx')),
   passphrase: 'dnflwlq2ro'
 }, app).listen(9443, () => {
   console.log('https server running 9443');
