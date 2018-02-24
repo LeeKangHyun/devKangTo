@@ -9,8 +9,10 @@ const Controller = ProfilePage => class extends Component {
   }
 
   onClickToHeart = () => {
-    this.setState({
-      isActive: !this.state.isActive,
+    this.setState((prevState) => {
+      return {
+        isActive: !prevState.isActive
+      }
     });
   }
 
@@ -19,7 +21,8 @@ const Controller = ProfilePage => class extends Component {
       <ProfilePage
         {...this.props}
         {...this.state}
-        onClickToHeart={this.onClickToHeart} />
+        onClickToHeart={this.onClickToHeart}
+      />
     )
   }
 }

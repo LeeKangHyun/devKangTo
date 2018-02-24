@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import kangto from './image/kangto.jpeg'
+import zeze from './image/zeze.jpg';
 
 export const Wrap = styled.div`
 `
@@ -23,8 +24,8 @@ export const Img = styled.div`
   height: 480px;
   margin: 45px auto 30px;
   margin-bottom: 20px;
-  background: #000 url(${kangto}) left center no-repeat;
-  background-size: contain;
+  background: #000 url(${zeze}) center center no-repeat;
+  background-size: cover;
 `
 
 export const TextWrap = styled.div`
@@ -34,7 +35,7 @@ export const TextWrap = styled.div`
     line-height: 20px;
   }
 `
-1,418,880
+
 export const StatusControl = styled.div`
   text-align: left;
   margin-bottom: 20px;
