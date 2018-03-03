@@ -23,13 +23,11 @@ const BoardPage = ({board, submit,}) => {
         <Tbody>
           {
             0 < board.length && board.map((item, index) => {
-              console.log(item);
               return (
                 <tr key={item.uid}>
                   <td>{index + 1}</td>
                   <td>{item.title || ''}</td>
-                  <td>{moment.unix(item.created || (Date.now()/1000)).format('YYYY-MM-DD a' +
-                    ' h:mm:ss')}</td>
+                  <td>{moment.unix(item.created || (Date.now()/1000)).format('YYYY-MM-DD a h:mm:ss')}</td>
                 </tr>
               )
             })
