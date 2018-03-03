@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import kangto from './image/kangto.jpeg'
+// import kangto from './image/kangto.jpeg'
 import zeze from './image/zeze.jpg';
 
 export const Wrap = styled.div`
