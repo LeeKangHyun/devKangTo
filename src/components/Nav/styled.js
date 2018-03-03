@@ -5,7 +5,7 @@ export const Nav = styled.nav`
   display: table;
   width: 100%;
   table-layout: fixed;
-`
+`;
 
 export const Link = styled(NavLink)`
   display: table-cell;
@@ -17,4 +17,4 @@ export const Link = styled(NavLink)`
   &.active {
     background-color: #2c85d3;
   }
-`
+`;

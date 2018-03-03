@@ -39,6 +39,6 @@ const ProfilePage = ({
       </Photo>
     </Wrap>
   )
-}
+};
 
 export default C(ProfilePage);

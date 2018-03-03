@@ -22,4 +22,4 @@ injectGlobal`
       clear: both;
     }
   }
-`
+`;

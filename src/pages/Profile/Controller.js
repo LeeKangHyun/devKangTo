@@ -14,7 +14,7 @@ const Controller = ProfilePage => class extends Component {
         isActive: !prevState.isActive
       }
     });
-  }
+  };
 
   render() {
     return (
@@ -25,6 +25,6 @@ const Controller = ProfilePage => class extends Component {
       />
     )
   }
-}
+};
 
 export default Controller;
