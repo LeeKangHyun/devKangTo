@@ -5,30 +5,38 @@ const Controller = ProfilePage => class extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      keyword: '',
       board: [],
       loading: false,
     }
   }
   
   componentDidMount() {
-    const { loading, } = this.state;
-    if (!loading) {
-      this.getBoardList();
-    }
+    // const { loading, } = this.state;
+    // if (!loading) {
+    this.getBoardList();
+    // }
   }
   
   getBoardList = (type = 'post') => {
-    let _this = this;
     FB.database().ref(`Board/${type}`).on('value', (snapshot) => {
-      _this.setState({
+      this.setState({
         board: snapshot.val(),
         loading: true,
-      })
-    })
+      });
+
+    });
   };
+
+  onChangeToState = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
   
-  submit = (data) => {
-    alert(`준비중 !${JSON.stringify(data)}`);
+  onSubmit = e => {
+    e.preventDefault();
+    const { keyword } = this.state;
+    alert(keyword)
   };
 
   render() {
@@ -36,8 +44,8 @@ const Controller = ProfilePage => class extends Component {
       <ProfilePage
         {...this.props}
         {...this.state}
-        submit={this.submit.bind(this)}
-      />
+        onChangeToState={this.onChangeToState}
+        onSubmit={this.onSubmit} />
     )
   }
 };

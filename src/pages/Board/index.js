@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import {
-  Button,
   Wrap,
+  Input,
+  Button,
+  SearchWrap,
   Tbody,
 } from './styled';
 import C from './Controller';
 
-const BoardPage = ({board, submit,}) => {
+const BoardPage = ({
+  board, keyword, 
+  onSubmit, onChangeToState
+}) => {
   return (
     <div>
       <Wrap>
@@ -21,23 +26,25 @@ const BoardPage = ({board, submit,}) => {
           </tr>
         </thead>
         <Tbody>
-          {
-            0 < board.length && board.map((item, index) => {
-              return (
-                <tr key={item.uid}>
-                  <td>{index + 1}</td>
-                  <td>{item.title || ''}</td>
-                  <td>{moment.unix(item.created || (Date.now()/1000)).format('YYYY-MM-DD a h:mm:ss')}</td>
-                </tr>
-              )
-            })
-          }
+          {0 < board.length && board.map((item, key) => {
+            const date = item.created ? moment.unix(item.created) : moment();
+            return (
+              <tr key={key}>
+                <td>{key + 1}</td>
+                <td>{item.title || ''}</td>
+                <td>{date.format('YYYY-MM-DD a h:mm:ss')}</td>
+              </tr>
+            )
+          })}
         </Tbody>
       </Wrap>
-      
-      <Button onClick={submit.bind(this, {'answer': '상훈이 바보'})}>
-        전송
-      </Button>
+
+      <SearchWrap className="Clearfix" onSubmit={onSubmit}>
+        <Input name="keyword" value={keyword} onChange={onChangeToState} />
+        <Button type="submit">
+          검색
+        </Button>
+      </SearchWrap>
     </div>
   )
 };

@@ -4,6 +4,7 @@ injectGlobal`
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
   a {
@@ -21,5 +22,9 @@ injectGlobal`
       content: "";
       clear: both;
     }
+  }
+
+  .Center {
+    text-align: center;
   }
 `;
