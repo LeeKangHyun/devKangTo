@@ -12,6 +12,8 @@ export const Link = styled(NavLink)`
   padding: .6rem 0;
   color: #fff;
   background-color: #3d96e4;
+  font-size: 24px;
+  font-weight: 500;
 
   &:hover,
   &.active {

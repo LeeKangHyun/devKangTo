@@ -7,36 +7,31 @@ const Controller = ProfilePage => class extends Component {
     this.state = {
       keyword: '',
       board: [],
-      loading: false,
     }
   }
   
   componentDidMount() {
-    // const { loading, } = this.state;
-    // if (!loading) {
     this.getBoardList();
-    // }
   }
   
   getBoardList = (type = 'post') => {
     FB.database().ref(`Board/${type}`).on('value', (snapshot) => {
       this.setState({
         board: snapshot.val(),
-        loading: true,
       });
-
     });
   };
 
   onChangeToState = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-  }
+  };
   
   onSubmit = e => {
     e.preventDefault();
     const { keyword } = this.state;
-    alert(keyword)
+    let msg = '' === keyword.trim() ? '내용을 입력하라고 상훈아':keyword;
+    alert(msg);
   };
 
   render() {

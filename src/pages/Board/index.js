@@ -6,8 +6,10 @@ import {
   Wrap,
   Input,
   Button,
+  MakeButton,
   SearchWrap,
   Tbody,
+  Thead,
 } from './styled';
 import C from './Controller';
 
@@ -18,13 +20,13 @@ const BoardPage = ({
   return (
     <div>
       <Wrap>
-        <thead>
+        <Thead>
           <tr>
             <th>번호</th>
             <th>제목</th>
             <th>날짜</th>
           </tr>
-        </thead>
+        </Thead>
         <Tbody>
           {0 < board.length && board.map((item, key) => {
             const date = item.created ? moment.unix(item.created) : moment();
@@ -38,9 +40,11 @@ const BoardPage = ({
           })}
         </Tbody>
       </Wrap>
-
-      <SearchWrap className="Clearfix" onSubmit={onSubmit}>
-        <Input name="keyword" value={keyword} onChange={onChangeToState} />
+      <MakeButton>
+        <button>글쓰기</button>
+      </MakeButton>
+      <SearchWrap className="Clearfix" onSubmit={onSubmit.bind(this)}>
+        <Input innerRef={input => this.input = input} name="keyword" value={keyword} onChange={onChangeToState} />
         <Button type="submit">
           검색
         </Button>
@@ -51,7 +55,7 @@ const BoardPage = ({
 
 BoardPage.propTypes = {
   board: PropTypes.array,
-  submit: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default C(BoardPage);

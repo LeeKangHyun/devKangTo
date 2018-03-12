@@ -19,7 +19,7 @@ injectGlobal`
   .Clearfix {
     &::after {
       display: block;
-      content: "";
+      content: " ";
       clear: both;
     }
   }
