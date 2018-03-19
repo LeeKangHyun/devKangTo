@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import FB from 'firebase';
+
+import Board from './index';
 
 const Controller = ProfilePage => class extends Component {
   constructor(props) {
@@ -45,4 +49,29 @@ const Controller = ProfilePage => class extends Component {
   }
 };
 
-export default Controller;
+Controller.propTypes = {
+  selectedReddit: PropTypes.string.isRequired,
+  posts: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  lastUpdated: PropTypes.number,
+  dispatch: PropTypes.func.isRequired,
+};
+
+function mapStateToProps(state) {
+  const { selectedReddit, postsByReddit } = state;
+  const { isFetching, lastUpdated, items: posts } = postsByReddit[selectedReddit] || {
+    isFetching: true,
+    items: [],
+  };
+  
+  return {
+    selectedReddit,
+    posts,
+    isFetching,
+    lastUpdated,
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Controller(Board));
