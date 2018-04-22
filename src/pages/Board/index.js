@@ -11,7 +11,6 @@ import {
   Tbody,
   Thead,
 } from './styled';
-import C from './Controller';
 
 const BoardPage = ({
   board, keyword, 
@@ -58,4 +57,4 @@ BoardPage.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-export default C(BoardPage);
+export default BoardPage;

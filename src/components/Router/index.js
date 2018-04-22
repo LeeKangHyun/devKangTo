@@ -15,7 +15,7 @@ const Loadable = opts => L({
 });
 
 const Home = Loadable({ loader: () => import(/* webpackChunkName: "home" */ 'pages/Home') });
-const Board = Loadable({ loader: () => import(/* webpackChunkName: "board" */ 'pages/Board') });
+const Board = Loadable({ loader: () => import(/* webpackChunkName: "board" */ 'pages/Board/Controller') });
 const Profile = Loadable({ loader: () => import(/* webpackChunkName: "profile" */ 'pages/Profile') });
 
 const RouterComponent = () => {

@@ -1,30 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import FB from 'firebase';
 
 import Board from './index';
 
-const Controller = ProfilePage => class extends Component {
+const C = ProfilePage => class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: '',
-      board: [],
     }
   }
-  
-  componentDidMount() {
-    this.getBoardList();
-  }
-  
-  getBoardList = (type = 'post') => {
-    FB.database().ref(`Board/${type}`).on('value', (snapshot) => {
-      this.setState({
-        board: snapshot.val(),
-      });
-    });
-  };
 
   onChangeToState = e => {
     const { name, value } = e.target;
@@ -49,7 +34,7 @@ const Controller = ProfilePage => class extends Component {
   }
 };
 
-Controller.propTypes = {
+C.propTypes = {
   selectedReddit: PropTypes.string.isRequired,
   posts: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -57,21 +42,29 @@ Controller.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
-  const { selectedReddit, postsByReddit } = state;
-  const { isFetching, lastUpdated, items: posts } = postsByReddit[selectedReddit] || {
+const mapStateToProps = state => {
+  console.log(state);
+  const {
+    selectedReddit,
+    postsByReddit
+  } = state;
+  const {
+    isFetching,
+    lastUpdated,
+    items: board
+  } = postsByReddit[selectedReddit] || {
     isFetching: true,
     items: [],
   };
   
   return {
     selectedReddit,
-    posts,
+    board,
     isFetching,
     lastUpdated,
   }
-}
+};
 
 export default connect(
   mapStateToProps
-)(Controller(Board));
+)(C(Board));
