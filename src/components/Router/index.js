@@ -17,6 +17,8 @@ const Loadable = opts => L({
 const Home = Loadable({ loader: () => import(/* webpackChunkName: "home" */ 'pages/Home') });
 const Board = Loadable({ loader: () => import(/* webpackChunkName: "board" */ 'pages/Board/Controller') });
 const Profile = Loadable({ loader: () => import(/* webpackChunkName: "profile" */ 'pages/Profile') });
+const Pet  = Loadable({ loader: () => import(/* webpackChunkName: "pet"
+ */ 'pages/Pet/Controller') });
 
 const RouterComponent = () => {
   return (
@@ -27,6 +29,7 @@ const RouterComponent = () => {
           <Route exact path="/" component={Home} />
           <Route path="/board" component={Board} />
           <Route path="/profile" component={Profile} />
+          <Route path="/pet" component={Pet} />
         </Switch>
       </Wrap>
     </Router>

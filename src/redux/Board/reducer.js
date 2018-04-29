@@ -1,4 +1,8 @@
-import { SELECT_REDDIT, REQUEST_POSTS, RECEIVE_POSTS } from './action';
+import {
+  SELECT_REDDIT,
+  REQUEST_POSTS,
+  RECEIVE_POSTS
+} from './action';
 
 export function selectedReddit(state = 'reactjs', action) {
   switch (action.type) {

@@ -43,10 +43,8 @@ const BoardPage = ({
         <button>글쓰기</button>
       </MakeButton>
       <SearchWrap className="Clearfix" onSubmit={onSubmit.bind(this)}>
-        <Input innerRef={input => this.input = input} name="keyword" value={keyword} onChange={onChangeToState} />
-        <Button type="submit">
-          검색
-        </Button>
+        <Input name="keyword" value={keyword} onChange={onChangeToState} />
+        <Button type="submit">검색</Button>
       </SearchWrap>
     </div>
   )

@@ -1,9 +1,19 @@
 /* eslint-disable no-constant-condition */
 
-import { take, put, call, fork, select } from 'redux-saga/effects'
+import {
+  take,
+  put,
+  call,
+  fork,
+  select,
+} from 'redux-saga/effects'
 import fetch from 'isomorphic-fetch';
 import * as actions from '../Board/action';
-import { selectedRedditSelector, postsByRedditSelector } from './selectors';
+
+import {
+  selectedRedditSelector,
+  postsByRedditSelector,
+} from './selectors';
 
 export function fetchPostsApi(reddit) {
   return fetch(`http://www.reddit.com/r/${reddit}.json`)
@@ -31,7 +41,9 @@ export function* nextRedditChange() {
     
     const newReddit = yield select(selectedRedditSelector);
     const postsByReddit = yield select(postsByRedditSelector);
-    if (prevReddit !== newReddit && !postsByReddit[newReddit]) yield fork(fetchPosts, newReddit);
+    if (prevReddit !== newReddit && !postsByReddit[newReddit]) {
+      yield fork(fetchPosts, newReddit);
+    }
   }
 }
 
