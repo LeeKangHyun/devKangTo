@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FB from 'firebase';
+import update from 'immutability-helper';
 
 const Controller = ProfilePage => class extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ const Controller = ProfilePage => class extends Component {
     this.state = {
       keyword: '',
       board: [],
+      loading: true,
     }
   }
   
@@ -15,9 +17,11 @@ const Controller = ProfilePage => class extends Component {
   }
   
   getBoardList = (type = 'post') => {
+    const { board } = this.state;
     FB.database().ref(`Board/${type}`).on('value', (snapshot) => {
       this.setState({
-        board: snapshot.val(),
+        board: update(board, {$push: snapshot.val()}),
+        loading: false,
       });
     });
   };

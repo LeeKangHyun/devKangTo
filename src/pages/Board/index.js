@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+import Loading from 'components/Loading';
+
 import {
   Wrap,
   Input,
@@ -14,11 +16,12 @@ import {
 import C from './Controller';
 
 const BoardPage = ({
-  board, keyword, 
+  board, keyword, loading,
   onSubmit, onChangeToState
 }) => {
   return (
     <div>
+      {loading && <Loading />}
       <Wrap>
         <Thead>
           <tr>
@@ -45,9 +48,7 @@ const BoardPage = ({
       </MakeButton>
       <SearchWrap className="Clearfix" onSubmit={onSubmit.bind(this)}>
         <Input innerRef={input => this.input = input} name="keyword" value={keyword} onChange={onChangeToState} />
-        <Button type="submit">
-          검색
-        </Button>
+        <Button type="submit">검색</Button>
       </SearchWrap>
     </div>
   )

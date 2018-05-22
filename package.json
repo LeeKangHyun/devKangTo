@@ -28,6 +28,7 @@
     "firebase": "^4.10.1",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
+    "immutability-helper": "^2.7.0",
     "jest": "20.0.4",
     "moment": "^2.21.0",
     "object-assign": "4.1.1",
