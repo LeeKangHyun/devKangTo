@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'react-redux';
+import LoadingBar from 'react-redux-loading-bar';
 
 import Controller from './Controller';
 import { getPost } from '@/redux/Board/action';
@@ -22,6 +23,7 @@ const BoardPage = ({
 }) => {
   return (
     <div>
+      <LoadingBar />
       <Wrap>
         <Thead>
           <tr>

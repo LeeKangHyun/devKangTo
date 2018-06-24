@@ -1,4 +1,5 @@
 import { put, call, takeLatest, } from 'redux-saga/effects';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import {
   BOARD_FETCH_REQUEST,
@@ -10,6 +11,7 @@ import { board } from './api';
 
 function* fetchBoard() {
   try {
+    yield put(showLoading());
     const data = yield call(board.getPost);
     yield put({
       type: BOARD_FETCH_SUCCESS,
@@ -20,6 +22,8 @@ function* fetchBoard() {
       type: BOARD_FETCH_FAILED,
       error: err
     })
+  } finally {
+    yield put(hideLoading());
   }
 }
 
