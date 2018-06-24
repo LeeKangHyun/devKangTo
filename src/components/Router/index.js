@@ -14,9 +14,9 @@ const Loadable = opts => L({
   loading: Loading,
 });
 
-const Home = Loadable({ loader: () => import(/* webpackChunkName: "home" */ 'pages/Home') });
-const Board = Loadable({ loader: () => import(/* webpackChunkName: "board" */ 'pages/Board/Controller') });
-const Profile = Loadable({ loader: () => import(/* webpackChunkName: "profile" */ 'pages/Profile') });
+const Home = Loadable({ loader: () => import(/* webpackChunkName: "home" */ '@/pages/Home') });
+const Board = Loadable({ loader: () => import(/* webpackChunkName: "board" */ '@/pages/Board') });
+const Profile = Loadable({ loader: () => import(/* webpackChunkName: "profile" */ '@/pages/Profile') });
 const Pet  = Loadable({ loader: () => import(/* webpackChunkName: "pet"
  */ 'pages/Pet/Controller') });
 

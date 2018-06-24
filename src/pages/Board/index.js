@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { connect } from 'react-redux';
+
+import Controller from './Controller';
+import { getPost } from '@/redux/Board/action';
 
 import {
   Wrap,
@@ -51,8 +55,11 @@ const BoardPage = ({
 };
 
 BoardPage.propTypes = {
-  board: PropTypes.array,
+  board: PropTypes.object,
   onSubmit: PropTypes.func,
 };
 
-export default BoardPage;
+export default connect(
+  ({ board }) => ({ board }),
+  { getPost }
+)(Controller(BoardPage));

@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-import Board from './index';
 
 const C = ProfilePage => class extends Component {
   constructor(props) {
@@ -10,6 +6,11 @@ const C = ProfilePage => class extends Component {
     this.state = {
       keyword: ''
     }
+  }
+  
+  componentDidMount() {
+    const { getPost } = this.props;
+    getPost();
   }
 
   onChangeToState = e => {
@@ -35,37 +36,4 @@ const C = ProfilePage => class extends Component {
   }
 };
 
-C.propTypes = {
-  selectedReddit: PropTypes.string.isRequired,
-  posts: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
-  dispatch: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => {
-  console.log(state);
-  const {
-    selectedReddit,
-    postsByReddit
-  } = state;
-  const {
-    isFetching,
-    lastUpdated,
-    items: board
-  } = postsByReddit[selectedReddit] || {
-    isFetching: true,
-    items: [],
-  };
-  
-  return {
-    selectedReddit,
-    board,
-    isFetching,
-    lastUpdated,
-  }
-};
-
-export default connect(
-  mapStateToProps
-)(C(Board));
+export default C;

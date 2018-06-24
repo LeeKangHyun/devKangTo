@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux';
-import { postsByReddit, selectedReddit } from './Board/reducer';
-import { getPost, putPost } from './Pet/reducer';
+
+import board from './Board/reducer';
 
 const rootReducer = combineReducers({
-  postsByReddit,
-  selectedReddit,
-  getPost,
-  putPost,
+  board,
 });
 
 export default rootReducer;

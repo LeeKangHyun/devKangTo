@@ -1,50 +1,38 @@
 import {
-  SELECT_REDDIT,
-  REQUEST_POSTS,
-  RECEIVE_POSTS
-} from './action';
+  BOARD_FETCH_REQUEST,
+  BOARD_FETCH_SUCCESS,
+  BOARD_FETCH_FAILED,
+} from "./action";
 
-export function selectedReddit(state = 'reactjs', action) {
-  switch (action.type) {
-    case SELECT_REDDIT:
-      return action.reddit
-    default:
-      return state
-  }
-}
+const initialState = {
+  post: [],
+  isLoading: false,
+};
 
-function posts(
-  state = {
-    isFetching: false,
-    items: [],
-  },
-  action,
-) {
+const Board = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
-    case REQUEST_POSTS:
-      return { ...state, isFetching: true }
-    
-    case RECEIVE_POSTS:
+    case BOARD_FETCH_REQUEST:
       return {
         ...state,
-        isFetching: false,
-        items: action.posts,
-        lastUpdated: action.receivedAt,
-      }
-    default:
-      return state
-  }
-}
-
-export function postsByReddit(state = {}, action) {
-  switch (action.type) {
-    case REQUEST_POSTS:
-    case RECEIVE_POSTS:
+        isLoading: true,
+      };
+    case BOARD_FETCH_SUCCESS:
       return {
         ...state,
-        [action.reddit]: posts(state[action.reddit], action),
-      }
+        ...action,
+        isLoading: false,
+      };
+    case BOARD_FETCH_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+      };
     default:
-      return state
+      return state;
   }
-}
+};
+
+export default Board;
