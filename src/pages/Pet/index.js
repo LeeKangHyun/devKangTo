@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Controller from './Controller';
 import {
   Wrap
 } from './styled';
@@ -21,4 +23,4 @@ const Pet = ({
   )
 };
 
-export default Pet;
+export default Controller(Pet);

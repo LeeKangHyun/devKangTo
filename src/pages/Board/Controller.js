@@ -12,7 +12,7 @@ const C = ProfilePage => class extends Component {
     const { getPost } = this.props;
     getPost();
   }
-
+  
   onChangeToState = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });

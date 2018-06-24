@@ -31,7 +31,7 @@ const BoardPage = ({
           </tr>
         </Thead>
         <Tbody>
-          {0 < board.length && board.map((item, key) => {
+          {board.post && board.post.map((item, key) => {
             const date = item.created ? moment.unix(item.created) : moment();
             return (
               <tr key={key}>
