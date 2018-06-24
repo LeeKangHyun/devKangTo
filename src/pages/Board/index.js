@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { connect } from 'react-redux';
 
-import Loading from 'components/Loading';
+import Controller from './Controller';
+import { getPost } from '@/redux/Board/action';
 
 import {
   Wrap,
@@ -13,15 +15,13 @@ import {
   Tbody,
   Thead,
 } from './styled';
-import C from './Controller';
 
 const BoardPage = ({
-  board, keyword, loading,
+  board, keyword, 
   onSubmit, onChangeToState
 }) => {
   return (
     <div>
-      {loading && <Loading />}
       <Wrap>
         <Thead>
           <tr>
@@ -31,7 +31,7 @@ const BoardPage = ({
           </tr>
         </Thead>
         <Tbody>
-          {0 < board.length && board.map((item, key) => {
+          {board.post && board.post.map((item, key) => {
             const date = item.created ? moment.unix(item.created) : moment();
             return (
               <tr key={key}>
@@ -47,7 +47,7 @@ const BoardPage = ({
         <button>글쓰기</button>
       </MakeButton>
       <SearchWrap className="Clearfix" onSubmit={onSubmit.bind(this)}>
-        <Input innerRef={input => this.input = input} name="keyword" value={keyword} onChange={onChangeToState} />
+        <Input name="keyword" value={keyword} onChange={onChangeToState} />
         <Button type="submit">검색</Button>
       </SearchWrap>
     </div>
@@ -55,8 +55,11 @@ const BoardPage = ({
 };
 
 BoardPage.propTypes = {
-  board: PropTypes.array,
+  board: PropTypes.object,
   onSubmit: PropTypes.func,
 };
 
-export default C(BoardPage);
+export default connect(
+  ({ board }) => ({ board }),
+  { getPost }
+)(Controller(BoardPage));

@@ -1,31 +1,18 @@
 import React, { Component } from 'react';
-import FB from 'firebase';
-import update from 'immutability-helper';
 
-const Controller = ProfilePage => class extends Component {
+const C = ProfilePage => class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: '',
-      board: [],
-      loading: true,
+      keyword: ''
     }
   }
   
   componentDidMount() {
-    this.getBoardList();
+    const { getPost } = this.props;
+    getPost();
   }
   
-  getBoardList = (type = 'post') => {
-    const { board } = this.state;
-    FB.database().ref(`Board/${type}`).on('value', (snapshot) => {
-      this.setState({
-        board: update(board, {$push: snapshot.val()}),
-        loading: false,
-      });
-    });
-  };
-
   onChangeToState = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -49,4 +36,4 @@ const Controller = ProfilePage => class extends Component {
   }
 };
 
-export default Controller;
+export default C;
