@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const https = require('https');
 const http = require('http');
-const fs = require('fs');
 
 app.use(express.static(path.join(__dirname, 'build')));
 
