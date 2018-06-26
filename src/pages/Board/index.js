@@ -23,7 +23,7 @@ const BoardPage = ({
 }) => {
   return (
     <div>
-      <LoadingBar />
+      <LoadingBar style={{background: '#A1759C'}}/>
       <Wrap>
         <Thead>
           <tr>
