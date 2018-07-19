@@ -1,11 +1,12 @@
-import firebase from 'firebase';
+import { database } from 'firebase/app';
 
 const getPost = async () => {
-  const fb = firebase.database();
-  const data = await fb.ref('Board').once('value');
+  const data = await database()
+    .ref('Board')
+    .once('value');
   return data.val();
 };
 
 export default {
   getPost,
-}
+};

@@ -15,15 +15,20 @@ import {
   SearchWrap,
   Tbody,
   Thead,
+  TuiEditor,
+  Preview,
 } from './styled';
 
 const BoardPage = ({
-  board, keyword, 
-  onSubmit, onChangeToState
+  board,
+  keyword,
+  onSubmit,
+  onChangeToState,
+  onSubmitToEditor,
 }) => {
   return (
     <div>
-      <LoadingBar style={{background: '#A1759C'}}/>
+      <LoadingBar style={{ background: '#A1759C' }} />
       <Wrap>
         <Thead>
           <tr>
@@ -33,27 +38,30 @@ const BoardPage = ({
           </tr>
         </Thead>
         <Tbody>
-          {board.post && board.post.map((item, key) => {
-            const date = item.created ? moment.unix(item.created) : moment();
-            return (
-              <tr key={key}>
-                <td>{key + 1}</td>
-                <td>{item.title || ''}</td>
-                <td>{date.format('YYYY-MM-DD a h:mm:ss')}</td>
-              </tr>
-            )
-          })}
+          {board.post &&
+            board.post.map((item, key) => {
+              const date = item.created ? moment.unix(item.created) : moment();
+              return (
+                <tr key={key}>
+                  <td>{key + 1}</td>
+                  <td>{item.title || ''}</td>
+                  <td>{date.format('YYYY-MM-DD a h:mm:ss')}</td>
+                </tr>
+              );
+            })}
         </Tbody>
       </Wrap>
+      <TuiEditor id="editor" />
       <MakeButton>
-        <button>글쓰기</button>
+        <button onClick={onSubmitToEditor}>글쓰기</button>
       </MakeButton>
       <SearchWrap className="Clearfix" onSubmit={onSubmit.bind(this)}>
         <Input name="keyword" value={keyword} onChange={onChangeToState} />
         <Button type="submit">검색</Button>
       </SearchWrap>
+      <Preview id="Preview" className="tui-editor-contents" />
     </div>
-  )
+  );
 };
 
 BoardPage.propTypes = {
