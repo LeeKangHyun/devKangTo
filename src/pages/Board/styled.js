@@ -87,6 +87,6 @@ export const TuiEditor = styled.div`
   text-align: left;
 `;
 
-export const Preview = styled.pre`
+export const Preview = styled.div`
   text-align: left;
 `;
