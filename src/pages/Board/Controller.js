@@ -16,6 +16,7 @@ const C = BoardPage =>
         keyword: '',
         content: '',
         editor: null,
+        YNedit: true,
       };
     }
 
@@ -25,19 +26,29 @@ const C = BoardPage =>
       getPost();
 
       if (!editor) {
-        const tui = new Editor({
-          el: document.querySelector('#editor'),
-          initialEditType: 'wysiwyg',
-          previewStyle: 'tab',
-          height: 'auto',
-          language: 'ko_KR',
-        });
-
-        this.setState({
-          editor: tui,
-        });
+        this.makeEditor();
       }
     }
+
+    componentDidUpdate(prevProps, prevState) {
+      const { YNedit, editor } = this.state;
+      YNedit && editor ? editor.show() : editor.hide();
+    }
+
+    makeEditor = () => {
+      const tui = new Editor({
+        el: document.querySelector('#editor'),
+        initialEditType: 'wysiwyg',
+        previewStyle: 'tab',
+        height: 'auto',
+        language: 'ko_KR',
+        events: {},
+      });
+
+      this.setState({
+        editor: tui,
+      });
+    };
 
     onChangeToState = e => {
       const { name, value } = e.target;
