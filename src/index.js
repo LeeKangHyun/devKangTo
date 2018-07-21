@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import FB from "firebase";
+import FB from 'firebase/app';
 
 import registerServiceWorker from './registerServiceWorker';
 import Router from './components/Router';
