@@ -10,6 +10,9 @@ export const Input = styled.input`
   width: 300px;
   height: 35px;
   padding: 0 10px;
+  &.noClear {
+    float: none;
+  }
 `;
 
 export const Button = styled.button`
@@ -68,6 +71,15 @@ export const Tbody = styled.tbody`
   }
   td {
     padding: 0.3rem 0;
+  }
+`;
+
+export const Editor = styled.article`
+  text-align: left;
+  > div {
+    &:first-of-type {
+      margin-bottom: 1.5em;
+    }
   }
 `;
 

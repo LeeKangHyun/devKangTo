@@ -12,7 +12,9 @@ const C = BoardPage =>
     constructor(props) {
       super(props);
       this.state = {
+        title: '',
         keyword: '',
+        content: '',
         editor: null,
       };
     }
@@ -29,9 +31,6 @@ const C = BoardPage =>
           previewStyle: 'tab',
           height: 'auto',
           language: 'ko_KR',
-          events: {
-            change: this.onSubmitToEditor,
-          },
         });
 
         this.setState({
@@ -52,10 +51,28 @@ const C = BoardPage =>
       alert(msg);
     };
 
-    onSubmitToEditor = () => {
-      const { editor } = this.state;
-      const string = editor.getHtml();
-      document.querySelector('#Preview').innerHTML = string;
+    onSubmitToEditor = async () => {
+      const { setPost } = this.props;
+      const { title, editor } = this.state;
+      const content = editor.getHtml();
+      const data = {
+        title,
+        content,
+        created: Math.floor(Date.now() / 1000),
+      };
+      await setPost(data);
+      this.setState(
+        {
+          title: '',
+        },
+        () => {
+          editor.reset();
+        }
+      );
+    };
+
+    onClickToList = item => {
+      document.getElementById('Preview').innerHTML = item.content;
     };
 
     render() {
@@ -66,6 +83,7 @@ const C = BoardPage =>
           onChangeToState={this.onChangeToState}
           onSubmit={this.onSubmit}
           onSubmitToEditor={this.onSubmitToEditor}
+          onClickToList={this.onClickToList}
         />
       );
     }

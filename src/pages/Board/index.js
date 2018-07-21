@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 
 import Controller from './Controller';
-import { getPost } from '@/redux/Board/action';
+import { getPost, setPost } from '@/redux/Board/action';
 
 import {
   Wrap,
@@ -15,6 +15,7 @@ import {
   SearchWrap,
   Tbody,
   Thead,
+  Editor,
   TuiEditor,
   Preview,
 } from './styled';
@@ -22,9 +23,11 @@ import {
 const BoardPage = ({
   board,
   keyword,
+  title,
   onSubmit,
   onChangeToState,
   onSubmitToEditor,
+  onClickToList,
 }) => {
   return (
     <div>
@@ -39,27 +42,40 @@ const BoardPage = ({
         </Thead>
         <Tbody>
           {board.post &&
-            board.post.map((item, key) => {
-              const date = item.created ? moment.unix(item.created) : moment();
+            Object.keys(board.post).map((key, idx) => {
+              const item = board.post[key];
+              const date = moment.unix(item.created);
               return (
-                <tr key={key}>
-                  <td>{key + 1}</td>
-                  <td>{item.title || ''}</td>
+                <tr key={idx} onClick={onClickToList.bind(this, item)}>
+                  <td>{idx + 1}</td>
+                  <td>{item.title}</td>
                   <td>{date.format('YYYY-MM-DD a h:mm:ss')}</td>
                 </tr>
               );
             })}
         </Tbody>
       </Wrap>
-      <TuiEditor id="editor" />
-      <MakeButton>
-        <button onClick={onSubmitToEditor}>글쓰기</button>
-      </MakeButton>
       <SearchWrap className="Clearfix" onSubmit={onSubmit.bind(this)}>
         <Input name="keyword" value={keyword} onChange={onChangeToState} />
         <Button type="submit">검색</Button>
       </SearchWrap>
-      <Preview id="Preview" className="tui-editor-contents" />
+      <Editor>
+        <div>
+          제목
+          <Input
+            className="noClear"
+            value={title}
+            name="title"
+            onChange={onChangeToState}
+          />
+        </div>
+        본문
+        <TuiEditor id="editor" />
+        <MakeButton>
+          <button onClick={onSubmitToEditor}>글쓰기</button>
+        </MakeButton>
+        <Preview id="Preview" className="tui-editor-contents" />
+      </Editor>
     </div>
   );
 };
@@ -71,5 +87,5 @@ BoardPage.propTypes = {
 
 export default connect(
   ({ board }) => ({ board }),
-  { getPost }
+  { getPost, setPost }
 )(Controller(BoardPage));
