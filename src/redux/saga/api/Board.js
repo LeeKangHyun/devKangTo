@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import 'firebase/database';
 
 const getPost = async () => {
   const data = await firebase
