@@ -4,6 +4,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar';
 
+import TuiEditor from './Component/Editor';
 import Controller from './Controller';
 import { getPost, setPost } from '@/redux/Board/action';
 
@@ -16,11 +17,11 @@ import {
   Tbody,
   Thead,
   Editor,
-  TuiEditor,
   Preview,
 } from './styled';
 
 const BoardPage = ({
+  YNedit,
   board,
   keyword,
   title,
@@ -59,23 +60,25 @@ const BoardPage = ({
         <Input name="keyword" value={keyword} onChange={onChangeToState} />
         <Button type="submit">검색</Button>
       </SearchWrap>
-      <Editor>
-        <div>
-          제목
-          <Input
-            className="noClear"
-            value={title}
-            name="title"
-            onChange={onChangeToState}
-          />
-        </div>
-        본문
-        <TuiEditor id="editor" />
-        <MakeButton>
-          <button onClick={onSubmitToEditor}>글쓰기</button>
-        </MakeButton>
-        <Preview id="Preview" className="tui-editor-contents" />
-      </Editor>
+      {YNedit && (
+        <Editor>
+          <div>
+            제목
+            <Input
+              className="noClear"
+              value={title}
+              name="title"
+              onChange={onChangeToState}
+            />
+          </div>
+          본문
+          <TuiEditor />
+          <MakeButton>
+            <button onClick={onSubmitToEditor}>글쓰기</button>
+          </MakeButton>
+        </Editor>
+      )}
+      <Preview id="Preview" className="tui-editor-contents" />
     </div>
   );
 };
