@@ -1,7 +1,5 @@
 import React from 'react';
-
 import logo from './image/logo.svg';
-
 import { Header, Logo, Title } from './styled';
 
 const HomePage = () => {

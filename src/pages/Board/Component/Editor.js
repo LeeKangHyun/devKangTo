@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import Tui from 'tui-editor';
-import 'codemirror/lib/codemirror.css'; // codemirror
-import 'tui-editor/dist/tui-editor.css'; // editor ui
-import 'tui-editor/dist/tui-editor-contents.css'; // editor content
-import 'highlight.js/styles/github.css'; // code block highlight
+import 'codemirror/lib/codemirror.css';
+import 'tui-editor/dist/tui-editor.css';
+import 'tui-editor/dist/tui-editor-contents.css';
+import 'highlight.js/styles/github.css';
 
 import { TuiEditor } from './styled';
+
 class Editor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.initialState;
+  }
+
+  get initialState() {
+    return {
       YNedit: false,
       editor: null,
     };
@@ -32,8 +37,10 @@ class Editor extends Component {
       events: {},
     });
 
-    this.setState({
-      editor: tui,
+    this.setState((state) => {
+      return {
+        editor: tui,
+      };
     });
   };
 

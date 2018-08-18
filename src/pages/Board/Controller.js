@@ -4,7 +4,11 @@ const C = BoardPage =>
   class extends Component {
     constructor(props) {
       super(props);
-      this.state = {
+      this.state = this.initialState;
+    }
+
+    get initialState() {
+      return {
         title: '',
         keyword: '',
         content: '',
