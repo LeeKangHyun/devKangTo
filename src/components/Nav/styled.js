@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 export const Nav = styled.nav`
   display: table;
@@ -9,16 +9,16 @@ export const Nav = styled.nav`
 
 export const Link = styled(NavLink)`
   display: table-cell;
-  padding: .6rem 0;
+  padding: 0.6rem 0;
   color: #fff;
-  background-color: #654EA3;
+  background-color: #654ea3;
   font-size: 24px;
-  font-weight: 500;
-
-  &:hover, &.active {
-    background-color: #796FA0;
+  font-weight: bold;
+  &:hover,
+  &.active {
+    background-color: #796fa0;
   }
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 767px) {
     font-size: 16px;
   }
 `;

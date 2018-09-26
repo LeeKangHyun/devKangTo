@@ -6,7 +6,7 @@ import Nav from '../Nav';
 
 import { Wrap } from './styled';
 
-const Loading = () => <div>loadng...</div>;
+const Loading = () => <div />;
 
 const Loadable = opts => L({
   ...opts,

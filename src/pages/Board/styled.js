@@ -10,6 +10,9 @@ export const Input = styled.input`
   width: 300px;
   height: 35px;
   padding: 0 10px;
+  &.noClear {
+    float: none;
+  }
 `;
 
 export const Button = styled.button`
@@ -36,7 +39,7 @@ export const MakeButton = styled.div`
     background-color: #3d96bc;
     color: white;
     font-size: 16px;
-  
+
     &:active {
       background-color: #2c85ab;
     }
@@ -53,7 +56,7 @@ export const Thead = styled.thead`
   font-size: 20px;
   cursor: default;
   th {
-    padding: .6rem 0;
+    padding: 0.6rem 0;
   }
 `;
 
@@ -67,6 +70,23 @@ export const Tbody = styled.tbody`
     }
   }
   td {
-    padding: .3rem 0;
+    padding: 0.3rem 0;
   }
+`;
+
+export const Editor = styled.article`
+  text-align: left;
+  > div {
+    &:first-of-type {
+      margin-bottom: 1.5em;
+    }
+  }
+`;
+
+export const TuiEditor = styled.div`
+  text-align: left;
+`;
+
+export const Preview = styled.div`
+  text-align: left;
 `;
