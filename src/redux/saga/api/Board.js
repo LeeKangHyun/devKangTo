@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
+import FB from 'firebase/app';
 import 'firebase/database';
 
 const getPost = async () => {
-  const data = await firebase
+  const data = await FB
     .database()
     .ref('Board')
     .once('value');
@@ -10,11 +10,12 @@ const getPost = async () => {
 };
 
 const setPost = async data => {
-  const database = firebase.database();
+  const database = FB.database();
   const newPostKey = await database
     .ref()
     .child('posts')
-    .push().key;
+    .push()
+    .key;
   return await database.ref(`Board/post/${newPostKey}`).update(data);
 };
 

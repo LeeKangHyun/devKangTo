@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
+    "axios": "^0.18.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -30,7 +31,6 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "immutability-helper": "^2.7.1",
-    "isomorphic-fetch": "^2.2.1",
     "jest": "20.0.4",
     "moment": "^2.21.0",
     "object-assign": "4.1.1",
@@ -106,7 +106,7 @@
       [
         "babel-plugin-root-import",
         {
-          "rootPathPrefix": "@",
+          "rootPathPrefix": "#",
           "rootPathSuffix": "src"
         }
       ]
@@ -114,5 +114,9 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/LeeKangHyun/devKangTo.git",
+  "author": "DevKang <rkdgusdl92@gmail.com>",
+  "license": "MIT"
 }

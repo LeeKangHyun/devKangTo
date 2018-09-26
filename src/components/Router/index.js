@@ -14,10 +14,10 @@ const Loadable = opts => L({
   loading: Loading,
 });
 
-const Home = Loadable({ loader: () => import(/* webpackChunkName: "home" */ '@/pages/Home') });
-const Board = Loadable({ loader: () => import(/* webpackChunkName: "board" */ '@/pages/Board') });
-const Profile = Loadable({ loader: () => import(/* webpackChunkName: "profile" */ '@/pages/Profile') });
-const Pet  = Loadable({ loader: () => import(/* webpackChunkName: "pet" */ '@/pages/Pet') });
+const Home = Loadable({ loader: () => import(/* webpackChunkName: "home" */ '#/pages/Home') });
+const Board = Loadable({ loader: () => import(/* webpackChunkName: "board" */ '#/pages/Board') });
+const Profile = Loadable({ loader: () => import(/* webpackChunkName: "profile" */ '#/pages/Profile') });
+const Pet  = Loadable({ loader: () => import(/* webpackChunkName: "pet" */ '#/pages/Pet') });
 
 const RouterComponent = () => {
   return (
