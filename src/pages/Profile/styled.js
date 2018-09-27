@@ -22,8 +22,7 @@ export const Photo = styled.div`
 export const Img = styled.div`
   max-width: 500px;
   height: 480px;
-  margin: 45px auto 30px;
-  margin-bottom: 20px;
+  margin: 45px auto 20px;
   background: #000 url(${zeze}) center center no-repeat;
   background-size: cover;
 `;

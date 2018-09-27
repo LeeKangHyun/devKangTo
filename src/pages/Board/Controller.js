@@ -6,14 +6,14 @@ const C = BoardPage =>
       super(props);
       this.state = this.initialState;
     }
-
+    
     get initialState() {
       return {
         title: '',
         keyword: '',
         content: '',
         YNedit: false,
-      };
+      }
     }
 
     componentDidMount() {
@@ -42,6 +42,7 @@ const C = BoardPage =>
         content,
         created: Math.floor(Date.now() / 1000),
       };
+      
       await setPost(data);
       this.setState(
         {
@@ -63,8 +64,10 @@ const C = BoardPage =>
           {...this.props}
           {...this.state}
           onChangeToState={this.onChangeToState}
+          
           onSubmit={this.onSubmit}
           onSubmitToEditor={this.onSubmitToEditor}
+          
           onClickToList={this.onClickToList}
         />
       );

@@ -6,7 +6,8 @@ import LoadingBar from 'react-redux-loading-bar';
 
 import TuiEditor from './Component/Editor';
 import Controller from './Controller';
-import { getPost, setPost } from '@/redux/Board/action';
+
+import { getPost, setPost } from '#/redux/Board/action';
 
 import {
   Wrap,
