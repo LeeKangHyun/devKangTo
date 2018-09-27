@@ -115,6 +115,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://localhost:3030/",
   "main": "index.js",
   "repository": "https://github.com/LeeKangHyun/devKangTo.git",
   "author": "DevKang <rkdgusdl92@gmail.com>",
