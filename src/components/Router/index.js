@@ -4,6 +4,7 @@ import L from 'react-loadable';
 
 import Nav from '../Nav';
 
+import ScrollTop from './ScrollTop';
 import { Wrap } from './styled';
 
 const Loading = () => <span />;
@@ -22,17 +23,19 @@ const Pet  = Loadable({ loader: () => import(/* webpackChunkName: "pet" */ '#/pa
 const RouterComponent = () => {
   return (
     <Router>
-      <Wrap>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/board" component={Board} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/pet" component={Pet} />
-        </Switch>
-      </Wrap>
+      <ScrollTop>
+        <Wrap>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/board" component={Board} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/pet" component={Pet} />
+          </Switch>
+        </Wrap>
+      </ScrollTop>
     </Router>
   );
-}
+};
 
 export default RouterComponent;

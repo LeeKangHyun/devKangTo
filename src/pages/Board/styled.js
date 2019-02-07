@@ -48,6 +48,8 @@ export const MakeButton = styled.div`
 
 export const Wrap = styled.table`
   width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
   table-layout: fixed;
   border-collapse: collapse;
 `;
@@ -57,11 +59,12 @@ export const Thead = styled.thead`
   cursor: default;
   th {
     padding: 0.6rem 0;
+    font-weight: bold;
   }
 `;
 
 export const Tbody = styled.tbody`
-  font-size: 20px;
+  font-size: 16px;
   tr {
     cursor: default;
     &:hover {
@@ -70,7 +73,13 @@ export const Tbody = styled.tbody`
     }
   }
   td {
-    padding: 0.3rem 0;
+    padding: 0.5rem 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    &.title {
+      text-align: left;
+    }
   }
 `;
 

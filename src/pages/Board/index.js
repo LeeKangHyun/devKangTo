@@ -49,9 +49,9 @@ const BoardPage = ({
               const date = moment.unix(item.created);
               return (
                 <tr key={idx} onClick={onClickToList.bind(this, item)}>
-                  <td>{idx + 1}</td>
-                  <td>{item.title}</td>
-                  <td>{date.format('YYYY-MM-DD a h:mm:ss')}</td>
+                  <td className="id">{idx + 1}</td>
+                  <td className="title">{item.title}</td>
+                  <td className="created">{date.format('YYYY-MM-DD a h:mm:ss')}</td>
                 </tr>
               );
             })}
